@@ -20,6 +20,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    @IBAction func hitMePressed(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Geklikt", message: "You have succesfully clicked the button", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
+                print("Clicked Ok")
+            }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+            print("Clicked Cancel")
+        }))
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
 }
 

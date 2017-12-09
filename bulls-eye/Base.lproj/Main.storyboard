@@ -32,6 +32,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Wv-Ml-gdm">
                                         <rect key="frame" x="162.5" y="29" width="50" height="30"/>
                                         <state key="normal" title="Hit Me!"/>
+                                        <connections>
+                                            <action selector="hitMePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T7W-1h-cgJ"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
