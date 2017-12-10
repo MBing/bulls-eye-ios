@@ -108,6 +108,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EY-wK-Xoc">
                                         <rect key="frame" x="313" y="33" width="22" height="22"/>
+                                        <connections>
+                                            <segue destination="sAI-Re-2eO" kind="show" identifier="showInfo" id="aa5-5z-dey"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -153,6 +156,73 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-79.200000000000003" y="132.68365817091455"/>
+        </scene>
+        <!--Info Controller-->
+        <scene sceneID="qjj-0P-LrP">
+            <objects>
+                <viewController id="sAI-Re-2eO" customClass="InfoController" customModule="bulls_eye" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R4m-QB-6qO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B4K-be-iZO">
+                                <rect key="frame" x="0.0" y="335" width="375" height="335"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i4q-Sw-uJi">
+                                        <rect key="frame" x="166" y="152" width="42" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="i4q-Sw-uJi" secondAttribute="height" multiplier="65:46" id="RCa-VL-NWt"/>
+                                        </constraints>
+                                        <state key="normal" title="Close"/>
+                                        <connections>
+                                            <action selector="closeInfoView" destination="sAI-Re-2eO" eventType="touchUpInside" id="YWi-aU-ZzK"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="i4q-Sw-uJi" firstAttribute="centerY" secondItem="B4K-be-iZO" secondAttribute="centerY" id="7OY-Cn-Uht"/>
+                                    <constraint firstItem="i4q-Sw-uJi" firstAttribute="centerX" secondItem="B4K-be-iZO" secondAttribute="centerX" id="xHV-fU-mfs"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3T-gU-7Im">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="335"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ehT-h9-xpO">
+                                        <rect key="frame" x="0.0" y="40" width="375" height="254"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <string key="text">*** Bull’s Eye ***Welcome to the awesome game of Bull’s Eye where you can win points andfame by dragging a slider.Your goal is to place the slider as close as possible to the targetvalue. The closer you are, the more points you score. Enjoy!</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ehT-h9-xpO" firstAttribute="centerY" secondItem="h3T-gU-7Im" secondAttribute="centerY" id="LAg-o7-VyF"/>
+                                    <constraint firstItem="ehT-h9-xpO" firstAttribute="leading" secondItem="h3T-gU-7Im" secondAttribute="leading" id="ZUw-uq-HCC"/>
+                                    <constraint firstItem="ehT-h9-xpO" firstAttribute="top" secondItem="h3T-gU-7Im" secondAttribute="top" constant="40" id="djX-fr-NVh"/>
+                                    <constraint firstItem="ehT-h9-xpO" firstAttribute="centerX" secondItem="h3T-gU-7Im" secondAttribute="centerX" id="i4B-7J-aIb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="h3T-gU-7Im" firstAttribute="leading" secondItem="WZQ-4a-zku" secondAttribute="leading" id="1Lq-ed-hcz"/>
+                            <constraint firstItem="h3T-gU-7Im" firstAttribute="trailing" secondItem="WZQ-4a-zku" secondAttribute="trailing" id="KrI-GI-cJh"/>
+                            <constraint firstItem="B4K-be-iZO" firstAttribute="height" secondItem="h3T-gU-7Im" secondAttribute="height" id="MHK-Hy-QbN"/>
+                            <constraint firstItem="B4K-be-iZO" firstAttribute="width" secondItem="h3T-gU-7Im" secondAttribute="width" id="Pmf-h2-1eL"/>
+                            <constraint firstItem="B4K-be-iZO" firstAttribute="leading" secondItem="WZQ-4a-zku" secondAttribute="leading" id="Qd8-jJ-NMS"/>
+                            <constraint firstItem="B4K-be-iZO" firstAttribute="top" secondItem="h3T-gU-7Im" secondAttribute="bottom" id="ULD-Ny-aUj"/>
+                            <constraint firstItem="B4K-be-iZO" firstAttribute="trailing" secondItem="WZQ-4a-zku" secondAttribute="trailing" id="ZaH-yB-ve6"/>
+                            <constraint firstItem="h3T-gU-7Im" firstAttribute="top" secondItem="R4m-QB-6qO" secondAttribute="top" id="jXc-Bd-POd"/>
+                            <constraint firstAttribute="bottom" secondItem="B4K-be-iZO" secondAttribute="bottom" constant="-3" id="tbe-7u-TYB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WZQ-4a-zku"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UDm-Wm-w7T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="660" y="132.68365817091455"/>
         </scene>
     </scenes>
 </document>
