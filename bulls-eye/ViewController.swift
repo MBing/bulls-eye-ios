@@ -10,27 +10,95 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var sliderValue = 50 // slider starts at 50 so this should reflect that state
+    var bullValue = 0
+    var roundScore = 0
+    var roundNumberValue = 0
+    @IBOutlet weak var roundNumber: UILabel!
+    @IBOutlet weak var scoreNumber: UILabel!
+    @IBOutlet weak var bullNumber: UILabel!
+    @IBOutlet weak var sliderViewValue: UISlider!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        resetGameValues()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    func generateBullNumber() {
+        bullValue = Int(arc4random_uniform(100))
+        bullNumber.text = String(bullValue)
     }
 
+    func addToTotalScore(score: Int) {
+        roundScore = Int(scoreNumber.text!)! + score
+        scoreNumber.text = String(roundScore)
+    }
+    
+    func addRound() {
+        roundNumberValue += 1
+        roundNumber.text = String(roundNumberValue)
+    }
+    
+    func calculateScore() {
+        let difference = 100 - abs(bullValue - sliderValue)
+        addToTotalScore(score: difference)
+    }
+    
+    func resetSlider() {
+        sliderValue = 50
+        sliderViewValue.value = Float(sliderValue)
+    }
+    
+    func resetRoundNumber() {
+        roundNumberValue = 0
+        addRound()
+    }
+    
+    func resetScore() {
+        roundScore = 0
+        scoreNumber.text = String(roundScore)
+    }
+    
+    func resetGameValues() {
+        resetScore()
+        resetRoundNumber()
+        resetSlider()
+        generateBullNumber()
+    }
+    
     @IBAction func hitMePressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Geklikt", message: "You have succesfully clicked the button", preferredStyle: .alert)
+        let alert : UIAlertController
+
+        if bullValue == sliderValue {
+            alert = UIAlertController(title: "Score!!", message: "You have succesfully guessed the number!", preferredStyle: .alert)
+        } else {
+            alert = UIAlertController(title: "Oh No", message: "The value of the slider is \(sliderValue)", preferredStyle: .alert)
+        }
         
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-                print("Clicked Ok")
+                self.calculateScore()
+                self.addRound()
+                self.resetSlider()
+                self.generateBullNumber()
             }))
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
-            print("Clicked Cancel")
-        }))
+        
+//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { action in
+//            print("Clicked Cancel")
+//        }))
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func sliderMoved(_ sender: UISlider) {
+        sliderValue = Int(sender.value)
+    }
+    
+    @IBAction func resetGame(_ sender: UIButton) {
+        resetGameValues()
     }
     
 }

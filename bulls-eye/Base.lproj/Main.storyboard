@@ -40,11 +40,14 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="9Zd-jH-Yyy">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="9Zd-jH-Yyy">
                                         <rect key="frame" x="24" y="147" width="327" height="31"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="9Zd-jH-Yyy" secondAttribute="height" multiplier="323:30" id="IXA-pT-ofL"/>
                                         </constraints>
+                                        <connections>
+                                            <action selector="sliderMoved:" destination="BYZ-38-t0r" eventType="valueChanged" id="uG3-XF-7xS"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3Q-6N-XhV">
                                         <rect key="frame" x="0.0" y="62" width="375" height="48"/>
@@ -99,6 +102,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pN2-We-g2d">
                                         <rect key="frame" x="32" y="29" width="71" height="30"/>
                                         <state key="normal" title="Start Over"/>
+                                        <connections>
+                                            <action selector="resetGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="CWS-YA-SCQ"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1EY-wK-Xoc">
                                         <rect key="frame" x="313" y="33" width="22" height="22"/>
@@ -137,6 +143,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="bullNumber" destination="K3Q-6N-XhV" id="FqL-gb-uhd"/>
+                        <outlet property="roundNumber" destination="mXx-pZ-InM" id="MKu-0S-FkG"/>
+                        <outlet property="scoreNumber" destination="M0T-FW-8Cl" id="4r0-hf-m47"/>
+                        <outlet property="sliderViewValue" destination="9Zd-jH-Yyy" id="cv1-uT-zFr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
