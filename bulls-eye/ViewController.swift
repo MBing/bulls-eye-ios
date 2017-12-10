@@ -12,7 +12,7 @@ class ViewController: UIViewController {
 
     var sliderValue = 50 // slider starts at 50 so this should reflect that state
     var bullValue = 0
-    var roundScore = 0
+    var gameScore = 0
     var roundNumberValue = 0
     @IBOutlet weak var roundNumber: UILabel!
     @IBOutlet weak var scoreNumber: UILabel!
@@ -34,8 +34,8 @@ class ViewController: UIViewController {
     }
 
     func addToTotalScore(score: Int) {
-        roundScore = Int(scoreNumber.text!)! + score
-        scoreNumber.text = String(roundScore)
+        gameScore += score
+        scoreNumber.text = String(gameScore)
     }
     
     func addRound() {
@@ -44,8 +44,13 @@ class ViewController: UIViewController {
     }
     
     func calculateScore() {
-        let difference = 100 - abs(bullValue - sliderValue)
-        addToTotalScore(score: difference)
+        let difference = abs(bullValue - sliderValue)
+        var roundScore = 100 - difference
+        if difference == 0 {
+            roundScore += 100
+        }
+        
+        addToTotalScore(score: roundScore)
     }
     
     func resetSlider() {
@@ -59,8 +64,8 @@ class ViewController: UIViewController {
     }
     
     func resetScore() {
-        roundScore = 0
-        scoreNumber.text = String(roundScore)
+        gameScore = 0
+        scoreNumber.text = String(gameScore)
     }
     
     func resetGameValues() {
